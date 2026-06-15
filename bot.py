@@ -54,7 +54,7 @@ def main() -> None:
     app = ApplicationBuilder().token(token).build()
     app.add_handler(CommandHandler("hi", privet))
     app.add_handler(CommandHandler("d20", d20))
-    app.add_handler(CommandHandler("nine", nine))
+    app.add_handler(CommandHandler("900", nine))
 
     logger.info("Бот запущен. Webhook mode...")
     app.run_webhook(
