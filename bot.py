@@ -2,6 +2,7 @@ import logging
 import os
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+import random
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -12,6 +13,10 @@ logger = logging.getLogger(__name__)
 
 async def privet(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Hydra Dominatus")
+
+async def d20(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    number = random.randint(1, 20)
+    await update.message.reply_text(str(number))
 
 
 def main() -> None:
@@ -26,6 +31,7 @@ def main() -> None:
 
     app = ApplicationBuilder().token(token).build()
     app.add_handler(CommandHandler("hi", privet))
+    app.add_handler(CommandHandler("d20", d20))
 
     logger.info("Бот запущен. Webhook mode...")
     app.run_webhook(
