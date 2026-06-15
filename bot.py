@@ -18,6 +18,28 @@ async def d20(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     number = random.randint(1, 20)
     await update.message.reply_text(str(number))
 
+async def nine(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text(
+        "Ще не вмерла Україна, і слава, і воля,\n"
+        "Ще нам, браття молодії, усміхнеться доля.\n"
+        "Згинуть наші вороженьки, як роса на сонці,\n"
+        "Запануєм і ми, браття, у своїй сторонці.\n\n"
+        "Душу, тіло ми положим за нашу свободу.\n"
+        "І покажем, що ми, браття, козацького роду.\n\n"
+        "Станем, браття, в бій кровавий від Сяну до Дону\n"
+        "В ріднім краю панувати не дамо нікому;\n"
+        "Чорне море ще всміхнеться, дід Дніпро зрадіє,\n"
+        "Ще у нашій Україні доленька наспіє.\n\n"
+        "Душу, тіло ми положим за нашу свободу.\n"
+        "І покажем, що ми, браття, козацького роду.\n\n"
+        "А завзяття, праця щира свого ще докаже,\n"
+        "Ще ся волі в Україні піснь гучна розляже,\n"
+        "За Карпати відоб'ється, згомонить степами,\n"
+        "України слава стане поміж народами.\n\n"
+        "Душу, тіло ми положим за нашу свободу.\n"
+        "І покажем, що ми, браття, козацького роду."
+    )
+
 
 def main() -> None:
     token = os.getenv("BOT_TOKEN")
@@ -32,6 +54,7 @@ def main() -> None:
     app = ApplicationBuilder().token(token).build()
     app.add_handler(CommandHandler("hi", privet))
     app.add_handler(CommandHandler("d20", d20))
+    app.add_handler(CommandHandler("nine", nine))
 
     logger.info("Бот запущен. Webhook mode...")
     app.run_webhook(
